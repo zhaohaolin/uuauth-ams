@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://www.getahead.ltd.uk/dwr/dwr20.dtd">
+<dwr>
+	<allow>
+		<create creator="spring" javascript="TemplateDwr">
+			<param name="beanName" value="templateDwr" />
+			<include method="getContent" />
+			<include method="getRole" />
+		</create>
+		<create creator="spring" javascript="CheckDwr">
+			<param name="beanName" value="checkDwr" />
+			<include method="idCheck" />
+			<include method="nameCheck" />
+			<include method="pwdCheck" />
+		</create>
+		<create creator="spring" javascript="DepPostDwr">
+			<param name="beanName" value="depPostDwr" />
+			<include method="search" />
+		</create>
+		<create creator="spring" javascript="applicationDWR">
+			<param name="beanName" value="applicationDWR" />
+			<include method="getOnLineNum" />
+		</create>
+		<convert match="com.auth.server.domain.model.BasePost" converter="bean"></convert>
+	</allow>
+	<signatures>    
+	<![CDATA[   
+		import com.auth.server.controller.dwr.CheckDwr;
+		import com.auth.server.controller.dwr.DepPostDwr;
+		import com.auth.server.controller.dwr.TemplateDwr;
+		import com.auth.server.controller.dwr.ApplicationDWR;
+	]]>
+	</signatures>
+</dwr>

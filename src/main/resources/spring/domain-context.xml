@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="projectService" class="com.auth.server.domain.service.impl.ProjectServiceImpl">
+		<property name="basePostRepository" ref="basePostRepository" />
+		<property name="employeeInfoRepository" ref="employeeInfoRepository" />
+		<property name="employeeRoleRepository" ref="employeeRoleRepository" />
+		<property name="templateContentRepository" ref="templateContentRepository" />
+		<property name="projectInfoRepository" ref="projectInfoRepository" />
+	</bean>
+	
+</beans>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:servlet.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="apiConfig" class="com.auth.api.domain.ApiConfig">
+		<property name="apiUrl" value="${apiUrl}" />
+		<property name="token" value="${token}" />
+		<property name="password" value="${password}" />
+	</bean>
+
+	<!-- pms4j -->
+	<bean id="roleService" class="com.auth.pms.service.impl.RoleServiceImpl"
+		lazy-init="default">
+		<property name="roleDAO" ref="roleDAO" />
+	</bean>
+
+	<bean id="powerService" class="com.auth.pms.service.impl.PowerServiceImpl"
+		lazy-init="default">
+		<property name="roleDAO" ref="roleDAO" />
+		<property name="powerDAO" ref="powerDAO" />
+	</bean>
+
+</beans>

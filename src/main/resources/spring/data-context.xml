@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- datasource config -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		abstract="false" scope="singleton" lazy-init="default" autowire="default"
+		autowire-candidate="default" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+	</bean>
+
+	<!-- ebean config -->
+	<bean id="ebeanServerConfig" class="com.avaje.ebean.config.ServerConfig">
+		<property name="dataSource" ref="dataSource" />
+		<property name="name" value="mysql" />
+		<property name="defaultServer" value="true" />
+		<property name="loggingDirectory" value="logs" />
+		<property name="loggingLevel" value="NONE" />
+		<property name="debugSql" value="false" />
+		<property name="ddlGenerate" value="false" />
+		<property name="loggingToJavaLogger" value="true" />
+		<property name="ddlRun" value="false" />
+		<property name="autofetchConfig">
+			<bean class="com.avaje.ebean.config.AutofetchConfig">
+				<property name="logDirectory" value="logs" />
+			</bean>
+		</property>
+		<property name="externalTransactionManager">
+			<bean
+				class="com.avaje.ebean.springsupport.txn.SpringAwareJdbcTransactionManager" />
+		</property>
+		<property name="namingConvention">
+			<bean class="com.avaje.ebean.config.UnderscoreNamingConvention" />
+		</property>
+		<property name="classes">
+			<bean class="com.toolkit.persistence.ModelUtils" factory-method="scanModelPackage">
+				<constructor-arg>
+					<set>
+						<value>com.uuauth.ams.domain.entity.*</value>
+					</set>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="ebeanServer"
+		class="com.avaje.ebean.springsupport.factory.EbeanServerFactoryBean">
+		<property name="serverConfig" ref="ebeanServerConfig" />
+	</bean>
+
+</beans>

@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">	
+    <head>
+        <title></title>         
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style type="text/css" media="screen"> 
+			html, body	{ height:100%; }
+			body { margin:0; padding:0; overflow:auto; text-align:center; 
+			       background-color: #ffffff; }   
+			#flashContent { display:none; }
+        </style>
+        <link rel="stylesheet" type="text/css" href="history/history.css" />
+        <script type="text/javascript" src="history/history.js"></script>
+        <script type="text/javascript" src="swfobject.js"></script>
+        <script type="text/javascript">
+        	var closeWin=function(){
+        		if (confirm("您确定要关闭本页吗？")){
+					window.close();
+				}
+        	}
+        	var username = "";
+        	var password = "";
+        	window.onload=function(){
+        		username = getCookie('username');
+        		password = getCookie('password');
+        	}
+        	var init=function(){
+        		var params = '{"url":"http://192.168.1.81:580","token":"30b3a62fad85708b9f11e549d6ca1fb7","username":"'+username+'", "password":"'+password+'"}';
+        		return params;
+        	}
+            var swfVersionStr = "10.0.0";
+            var xiSwfUrlStr = "playerProductInstall.swf";
+            var flashvars = {};
+            var params = {};
+            params.quality = "high";
+            params.bgcolor = "#ffffff";
+            params.allowscriptaccess = "sameDomain";
+            params.allowfullscreen = "true";
+            var attributes = {};
+            attributes.id = "login";
+            attributes.name = "login";
+            attributes.align = "middle";
+            swfobject.embedSWF(
+                "login.swf", "flashContent", 
+                "100%", "100%", 
+                swfVersionStr, xiSwfUrlStr, 
+                flashvars, params, attributes);
+			swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+			
+			//cookie
+			function setCookie(name,value){
+			    var Days = 360;
+			    var exp  = new Date();
+			    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+			    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+			}
+			function getCookie(name){
+			    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+			    if(arr != null) 
+			    	return unescape(arr[2]); return null;
+			}
+			function delCookie(name){
+			    var cval=getCookie(name);
+			    if(cval!=null) 
+			    	document.cookie= name + "="+cval+";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+			}
+			var agt = navigator.userAgent.toLowerCase();      //navigator为浏览器对象。
+			var isIe = ((agt.indexOf("msie") != -1) && (agt.indexOf("opera") == -1) && (agt.indexOf("omniweb") == -1));
+			
+			//回车事件
+			document.onkeydown = function(e) {
+		    	var curKeyCode = isIe ? event.keyCode : e.which;
+			    //alert("Key code: "+curKeyCode+"\nYou press: "+String.fromCharCode(curKeyCode));
+			};
+			
+        </script>
+    </head>
+    <body>
+        <div id="flashContent">
+        	<p>
+	        	To view this page ensure that Adobe Flash Player version 
+				10.0.0 or greater is installed. 
+			</p>
+			<script type="text/javascript"> 
+				var pageHost = ((document.location.protocol == "https:") ? "https://" :	"http://"); 
+				document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+								+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+			</script> 
+        </div>
+	   	
+       	<noscript>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="login">
+                <param name="movie" value="login.swf" />
+                <param name="quality" value="high" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="allowScriptAccess" value="sameDomain" />
+                <param name="allowFullScreen" value="true" />
+                <!--[if !IE]>-->
+                <object type="application/x-shockwave-flash" data="login.swf" width="100%" height="100%">
+                    <param name="quality" value="high" />
+                    <param name="bgcolor" value="#ffffff" />
+                    <param name="allowScriptAccess" value="sameDomain" />
+                    <param name="allowFullScreen" value="true" />
+                <!--<![endif]-->
+                <!--[if gte IE 6]>-->
+                	<p> 
+                		Either scripts and active content are not permitted to run or Adobe Flash Player version
+                		10.0.0 or greater is not installed.
+                	</p>
+                <!--<![endif]-->
+                    <a href="http://www.adobe.com/go/getflashplayer">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+                    </a>
+                <!--[if !IE]>-->
+                </object>
+                <!--<![endif]-->
+            </object>
+	    </noscript>		
+   </body>
+</html>

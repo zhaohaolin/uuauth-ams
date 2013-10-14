@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="checkDwr" class="com.auth.server.controller.dwr.CheckDwr"
+		scope="prototype">
+		<property name="employeeInfoRepository" ref="employeeInfoRepository" />
+	</bean>
+
+	<bean id="depPostDwr" class="com.auth.server.controller.dwr.DepPostDwr"
+		scope="prototype">
+		<property name="basePostRepository" ref="basePostRepository" />
+		<property name="baseDepartmentRepository" ref="baseDepartmentRepository" />
+	</bean>
+
+	<bean id="templateDwr" class="com.auth.server.controller.dwr.TemplateDwr"
+		scope="prototype">
+		<property name="basePostRepository" ref="basePostRepository" />
+		<property name="employeeRoleRepository" ref="employeeRoleRepository" />
+		<property name="projectInfoRepository" ref="projectInfoRepository" />
+		<property name="projectRoleRepository" ref="projectRoleRepository" />
+		<property name="templateContentRepository" ref="templateContentRepository" />
+	</bean>
+
+	<bean id="applicationDWR" class="com.auth.server.controller.dwr.ApplicationDWR"></bean>
+</beans>
