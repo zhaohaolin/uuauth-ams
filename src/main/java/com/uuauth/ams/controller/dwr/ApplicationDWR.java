@@ -9,7 +9,7 @@ package com.uuauth.ams.controller.dwr;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
-import com.auth.pms.PmsConst;
+import com.uuauth.aps.ApsPmsConst;
 
 /**
  * TODO

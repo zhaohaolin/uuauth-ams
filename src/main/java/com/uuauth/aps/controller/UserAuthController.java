@@ -14,6 +14,7 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.toolkit.lang.EncryptUtil;
 import com.uuauth.ams.domain.entity.EmployeeInfo;
 import com.uuauth.ams.domain.entity.ProjectInfo;
+import com.uuauth.aps.domain.service.AutoLoginService;
+import com.uuauth.aps.domain.service.RemoteAuthService;
+import com.uuauth.aps.domain.service.SessionEmployeeService;
 
 /**
  * TODO
@@ -36,8 +40,7 @@ public class UserAuthController implements AuthConstants {
 	private RemoteAuthService		remoteAuthService;
 	private AutoLoginService		autoLoginService;
 	private SessionEmployeeService	sessionEmployeeService;
-	private Logger					log	= Slf4jLoggerFactory
-												.getLogger(getClass());
+	private Logger					log	= LoggerFactory.getLogger(getClass());
 	
 	// zhl@2012-05-24:修改接口，兼容客户端登录验证功能
 	@RequestMapping(value = "/remoteauth/user_auth")

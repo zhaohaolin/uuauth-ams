@@ -140,6 +140,6 @@ public class RemoteAuthServiceImpl implements RemoteAuthService {
 	
 	public void setBasePostRepository(BasePostRepository basePostRepository) {
 		this.basePostRepository = basePostRepository;
-	};
+	}
 	
 }

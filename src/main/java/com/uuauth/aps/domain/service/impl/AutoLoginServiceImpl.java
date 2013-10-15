@@ -18,6 +18,7 @@ import com.uuauth.ams.domain.entity.EmployeeInfo;
 import com.uuauth.ams.domain.entity.ProjectInfo;
 import com.uuauth.ams.domain.entity.ProjectLog;
 import com.uuauth.ams.domain.repository.ProjectLogRepository;
+import com.uuauth.api.service.UUAuthAPIService;
 import com.uuauth.aps.domain.service.AutoLoginService;
 import com.uuauth.aps.domain.service.BaseService;
 

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toolkit.lang.SecurityUtil;
+import com.uuauth.aps.domain.service.RemoteAuthService;
 
 /**
  * 取得登录的随机token
